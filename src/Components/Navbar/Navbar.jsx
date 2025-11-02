@@ -17,6 +17,7 @@ const Navbar = () => {
                     <ul className=' flex gap-16'>
                         <NavLink to="/">Home</NavLink>
                         <NavLink to="contactus">Contact Us</NavLink>
+                        <NavLink to="form">Form</NavLink>
                     </ul>
                 </div>
                 {/* mobile menu icon */}
@@ -34,6 +35,7 @@ const Navbar = () => {
                             <ul className='flex flex-col gap-2 text-center'>
                                 <NavLink to="/" onClick={menuopen}>Home</NavLink>
                                 <NavLink to="contactus" onClick={menuopen}>Contact Us</NavLink>
+                                <NavLink to="form" onClick={menuopen}>Form</NavLink>
                             </ul>
                         </div>
                     )
