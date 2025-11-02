@@ -19,11 +19,14 @@ const Form = () => {
       .required("Please enter your phone number.")
       .matches(/^(?:\+92|0092|0)?3[0-9]{9}$/, "Please enter a valid Pakistani phone number (e.g. +923001234567)."),
 
-    checkbox: Yup.array().min(1, "Please select at least one option."),
+    checkbox: Yup.array()
+    .min(1, "Please select at least one option."),
 
-    message: Yup.string().required("Please enter your message."),
+    message: Yup.string()
+    .required("Please enter your message."),
 
-    file: Yup.mixed().test(
+    file: Yup.mixed()
+    .test(
       "required",
       "Please upload at least one file (PNG, JPG, or PDF).",
       (value) => value && value.length > 0
@@ -61,28 +64,30 @@ const Form = () => {
     }
   };
 
-// ------------------------- Handle Submit-------------------------
+  // ------------------------- Handle Submit-------------------------
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({})
   const handlesubmit = async (e) => {
     e.preventDefault();
     try {
-      setErrors({});
+      // 👇 Important: validate all fields and collect all errors
       await validateSchema.validate(formData, { abortEarly: false });
-      console.log("✅ Form Data:", formData);
-      alert("Form submitted successfully!");
+      console.log("Form data is valid ✅:", formData);
     } catch (err) {
+      const newerrors = {};
       if (err.inner) {
-        const newErrors = {};
-        err.inner.forEach((error) => {
-          newErrors[error.path] = error.message;
+        err.inner.forEach((element) => {
+          newerrors[element.path] = element.message; // ✅ correct target
         });
-        setErrors(newErrors);
+      } else {
+        newerrors[err.path] = err.message;
       }
+      console.log("Validation errors:", newerrors);
+      setErrors(newerrors);
     }
   };
 
-  
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
       <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
