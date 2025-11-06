@@ -7,6 +7,7 @@ import Home from './Components/Home/Home'
 import Contact_Us from './Components/Contact_Us/Contact_Us'
 import Navbar from './Components/Navbar/Navbar'
 import Form from './Components/Contact_Us/Form'
+import React_Hook_Form from './Components/Contact_Us/React_Hook_Form'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,6 +20,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='contactus' element={<Contact_Us/>}/>
       <Route path='form' element={<Form/>}/>
+      <Route path='react_hook_form' element={<React_Hook_Form/>}/>
     </Routes>
     </BrowserRouter>
       

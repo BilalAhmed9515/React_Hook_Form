@@ -18,6 +18,7 @@ const Navbar = () => {
                         <NavLink to="/">Home</NavLink>
                         <NavLink to="contactus">Contact Us</NavLink>
                         <NavLink to="form">Form</NavLink>
+                        <NavLink to="react_hook_form">React Hook Form</NavLink>
                     </ul>
                 </div>
                 {/* mobile menu icon */}
